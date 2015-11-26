@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import LiftLabel from './components/lift-label';
+import LiftList from './components/lift-list';
 
-const name = 'squat';
+const lifts = ['squat', 'bench', 'deadlifts'];
 
 ReactDOM.render(
-  <LiftLabel name={name} />,
+  <LiftList lifts={lifts} />,
   document.getElementById('app')
 );
