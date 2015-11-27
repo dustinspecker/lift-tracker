@@ -6,7 +6,7 @@ export default React.createClass({
   render() {
     return <div>
       {this.props.lifts.map(lift =>
-        <LiftLabel name={lift} />
+        <LiftLabel key={lift} name={lift} />
       )}
     </div>;
   }
