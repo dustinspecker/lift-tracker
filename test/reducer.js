@@ -66,23 +66,23 @@ describe('reducer', () => {
     expect(nextState).to.equal(state);
   });
 
-  it('should set lift weight', () => {
+  it('should increment lift weight', () => {
     const state = fromJS({
       lifts: [{name: 'squat', weight: 45}]
     });
-    const action = {type: 'SET_WEIGHT', name: 'squat', weight: 200};
+    const action = {type: 'INCREMENT_WEIGHT', index: 0};
     const nextState = reducer(state, action);
 
     expect(nextState).to.equal(fromJS({
-      lifts: [{name: 'squat', weight: 200}]
+      lifts: [{name: 'squat', weight: 50}]
     }));
   });
 
-  it('should return same state if lift not found', () => {
+  it('should return same state if index not found', () => {
     const state = fromJS({
       lifts: [{name: 'squat', weight: 45}]
     });
-    const action = {type: 'SET_WEIGHT', name: 'bench', weight: 200};
+    const action = {type: 'INCREMENT_WEIGHT', index: 1};
     const nextState = reducer(state, action);
 
     expect(nextState).to.equal(fromJS({

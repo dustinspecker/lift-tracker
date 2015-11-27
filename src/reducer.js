@@ -22,21 +22,18 @@ function addLift(state, name, weight = 45) {
   );
 }
 
-function setWeight(state, name, weight) {
-  return state.updateIn(
-    ['lifts'],
-    List(),
-    lifts => {
-      const foundLiftIndex = lifts.findIndex(lift => lift.get('name') === name);
-      if (foundLiftIndex > -1) {
-        return lifts.update(
-          foundLiftIndex,
-          lift => lift.set('weight', weight)
-        );
-      }
+function incrementWeight(state, index) {
+  if (state.get('lifts').size <= index) {
+    return state;
+  }
 
-      return lifts;
-    }
+  return state.update(
+    'lifts',
+    List(),
+    lifts => lifts.update(
+      index,
+      lift => lift.set('weight', lift.get('weight') + 5)
+    )
   );
 }
 
@@ -44,8 +41,8 @@ export default function (state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case 'ADD_LIFT':
      return addLift(state, action.name, action.weight);
-    case 'SET_WEIGHT':
-     return setWeight(state, action.name, action.weight);
+    case 'INCREMENT_WEIGHT':
+     return incrementWeight(state, action.index);
   }
 
   return state;
