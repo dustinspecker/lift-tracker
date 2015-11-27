@@ -44,6 +44,15 @@ describe('reducer', () => {
     }));
   });
 
+  it('should add lift with weight', () => {
+    const action = {type: 'ADD_LIFT', name: 'squat', weight: 100};
+    const nextState = reducer(undefined, action);
+
+    expect(nextState).to.equal(fromJS({
+      lifts: [{name: 'squat', weight: 100}]
+    }));
+  });
+
   it('should not add duplicate lifts', () => {
     const state = Map({
       lifts: List.of(
