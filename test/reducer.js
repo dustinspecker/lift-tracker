@@ -20,7 +20,8 @@ describe('reducer', () => {
     expect(nextState).to.equal(fromJS({
       lifts: [
         {
-          name: 'squat'
+          name: 'squat',
+          weight: 45
         }
       ]
     }));
@@ -29,7 +30,8 @@ describe('reducer', () => {
   it('should handle adding multiple lifts', () => {
     const state = Map({
       lifts: List.of(Map({
-        name: 'squat'
+        name: 'squat',
+        weight: 45
       }))
     });
     const action = {type: 'ADD_LIFT', name: 'bench'};
@@ -37,8 +39,8 @@ describe('reducer', () => {
 
     expect(nextState).to.equal(fromJS({
       lifts: [
-        {name: 'squat'},
-        {name: 'bench'}
+        {name: 'squat', weight: 45},
+        {name: 'bench', weight: 45}
       ]
     }));
   });
@@ -46,8 +48,8 @@ describe('reducer', () => {
   it('should not add duplicate lifts', () => {
     const state = Map({
       lifts: List.of(
-        Map({name: 'squat'}),
-        Map({name: 'bench'})
+        Map({name: 'squat', weight: 45}),
+        Map({name: 'bench', weight: 45})
       )
     });
     const action = {type: 'ADD_LIFT', name: 'bench'};
@@ -58,7 +60,7 @@ describe('reducer', () => {
 
   it('should set lift weight', () => {
     const state = fromJS({
-      lifts: [{name: 'squat'}]
+      lifts: [{name: 'squat', weight: 45}]
     });
     const action = {type: 'SET_WEIGHT', name: 'squat', weight: 200};
     const nextState = reducer(state, action);
@@ -70,13 +72,13 @@ describe('reducer', () => {
 
   it('should return same state if lift not found', () => {
     const state = fromJS({
-      lifts: [{name: 'squat'}]
+      lifts: [{name: 'squat', weight: 45}]
     });
     const action = {type: 'SET_WEIGHT', name: 'bench', weight: 200};
     const nextState = reducer(state, action);
 
     expect(nextState).to.equal(fromJS({
-      lifts: [{name: 'squat'}]
+      lifts: [{name: 'squat', weight: 45}]
     }));
   });
 });
