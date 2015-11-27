@@ -68,6 +68,32 @@ describe('reducer', () => {
     });
   });
 
+  describe('REMOVE_LIFT', () => {
+    it('should remove lift', () => {
+      const state = fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      });
+      const action = {type: 'REMOVE_LIFT', index: 0};
+      const nextState = reducer(state, action);
+
+      expect(nextState).to.equal(fromJS({
+        lifts: []
+      }));
+    });
+
+    it('should return same state if index not found', () => {
+      const state = fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      });
+      const action = {type: 'REMOVE_LIFT', index: 1};
+      const nextState = reducer(state, action);
+
+      expect(nextState).to.equal(fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      }));
+    });
+  });
+
   describe('INCREMENT_WEIGHT', () => {
     it('should increment lift weight', () => {
       const state = fromJS({

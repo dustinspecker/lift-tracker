@@ -22,6 +22,14 @@ function addLift(state, name, weight = 45) {
   );
 }
 
+function removeLift(state, index) {
+  return state.update(
+    'lifts',
+    List(),
+    lifts => lifts.delete(index)
+  );
+}
+
 function adjustWeight(state, index, weightChange) {
   if (state.get('lifts').size <= index) {
     return state;
@@ -53,6 +61,8 @@ export default function (state = INITIAL_STATE, action = {}) {
       return decrementWeight(state, action.index);
     case 'INCREMENT_WEIGHT':
       return incrementWeight(state, action.index);
+    case 'REMOVE_LIFT':
+      return removeLift(state, action.index);
   }
 
   return state;
