@@ -22,7 +22,7 @@ function addLift(state, name, weight = 45) {
   );
 }
 
-function decrementWeight(state, index) {
+function adjustWeight(state, index, weightChange) {
   if (state.get('lifts').size <= index) {
     return state;
   }
@@ -32,24 +32,17 @@ function decrementWeight(state, index) {
     List(),
     lifts => lifts.update(
       index,
-      lift => lift.set('weight', lift.get('weight') - 5)
+      lift => lift.set('weight', lift.get('weight') + weightChange)
     )
   );
 }
 
-function incrementWeight(state, index) {
-  if (state.get('lifts').size <= index) {
-    return state;
-  }
+function decrementWeight(state, index) {
+  return adjustWeight(state, index, -5);
+}
 
-  return state.update(
-    'lifts',
-    List(),
-    lifts => lifts.update(
-      index,
-      lift => lift.set('weight', lift.get('weight') + 5)
-    )
-  );
+function incrementWeight(state, index) {
+  return adjustWeight(state, index, 5);
 }
 
 export default function (state = INITIAL_STATE, action = {}) {
