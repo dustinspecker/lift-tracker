@@ -18,6 +18,19 @@ function addLift(state, name) {
   );
 }
 
+function setWeight(state, name, weight) {
+  return state.updateIn(
+    ['lifts'],
+    List(),
+    lifts => {
+      return lifts.update(
+        lifts.findIndex(lift => lift.get('name') === name),
+        lift => lift.set('weight', weight)
+      );
+    }
+  );
+}
+
 export default function (state, action) {
   if (!state) {
     state = Map({
@@ -32,6 +45,8 @@ export default function (state, action) {
   switch (action.type) {
     case 'ADD_LIFT':
      return addLift(state, action.name);
+    case 'SET_WEIGHT':
+     return setWeight(state, action.name, action.weight);
   }
 
   return state;

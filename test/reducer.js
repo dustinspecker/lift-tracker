@@ -55,4 +55,16 @@ describe('reducer', () => {
 
     expect(nextState).to.equal(state);
   });
+
+  it('should set lift weight', () => {
+    const state = fromJS({
+      lifts: [{name: 'squat'}]
+    });
+    const action = {type: 'SET_WEIGHT', name: 'squat', weight: 200};
+    const nextState = reducer(state, action);
+
+    expect(nextState).to.equal(fromJS({
+      lifts: [{name: 'squat', weight: 200}]
+    }));
+  });
 });
