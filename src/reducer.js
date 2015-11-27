@@ -14,12 +14,8 @@ function addLift(lifts, name, weight = 45) {
   return lifts.push(Map({name, weight}))
 }
 
-function removeLift(state, index) {
-  return state.update(
-    'lifts',
-    List(),
-    lifts => lifts.delete(index)
-  );
+function removeLift(lifts, index) {
+  return lifts.delete(index);
 }
 
 function adjustWeight(state, index, weightChange) {
@@ -58,7 +54,11 @@ export default function (state = INITIAL_STATE, action = {}) {
     case 'INCREMENT_WEIGHT':
       return incrementWeight(state, action.index);
     case 'REMOVE_LIFT':
-      return removeLift(state, action.index);
+      return state.update(
+        'lifts',
+        List(),
+        lifts => removeLift(lifts, action.index)
+      );
   }
 
   return state;
