@@ -89,4 +89,28 @@ describe('reducer', () => {
       lifts: [{name: 'squat', weight: 45}]
     }));
   });
+
+  it('should decrement lift weight', () => {
+    const state = fromJS({
+      lifts: [{name: 'squat', weight: 45}]
+    });
+    const action = {type: 'DECREMENT_WEIGHT', index: 0};
+    const nextState = reducer(state, action);
+
+    expect(nextState).to.equal(fromJS({
+      lifts: [{name: 'squat', weight: 40}]
+    }));
+  });
+
+  it('should return same state if index not found', () => {
+    const state = fromJS({
+      lifts: [{name: 'squat', weight: 45}]
+    });
+    const action = {type: 'DECREMENT_WEIGHT', index: 1};
+    const nextState = reducer(state, action);
+
+    expect(nextState).to.equal(fromJS({
+      lifts: [{name: 'squat', weight: 45}]
+    }));
+  });
 });
