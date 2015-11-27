@@ -12,105 +12,111 @@ describe('reducer', () => {
     expect(reducer()).to.equal(state);
   });
 
-  it('should handle add lift', () => {
-    const action = {type: 'ADD_LIFT', name: 'squat'};
-    const nextState = reducer(undefined, action);
+  describe('ADD_LIFT', () => {
+    it('should handle add lift', () => {
+      const action = {type: 'ADD_LIFT', name: 'squat'};
+      const nextState = reducer(undefined, action);
 
-    expect(nextState).to.equal(fromJS({
-      lifts: [
-        {
+      expect(nextState).to.equal(fromJS({
+        lifts: [
+          {
+            name: 'squat',
+            weight: 45
+          }
+        ]
+      }));
+    });
+
+    it('should handle adding multiple lifts', () => {
+      const state = Map({
+        lifts: List.of(Map({
           name: 'squat',
           weight: 45
-        }
-      ]
-    }));
-  });
+        }))
+      });
+      const action = {type: 'ADD_LIFT', name: 'bench'};
+      const nextState = reducer(state, action);
 
-  it('should handle adding multiple lifts', () => {
-    const state = Map({
-      lifts: List.of(Map({
-        name: 'squat',
-        weight: 45
-      }))
+      expect(nextState).to.equal(fromJS({
+        lifts: [
+          {name: 'squat', weight: 45},
+          {name: 'bench', weight: 45}
+        ]
+      }));
     });
-    const action = {type: 'ADD_LIFT', name: 'bench'};
-    const nextState = reducer(state, action);
 
-    expect(nextState).to.equal(fromJS({
-      lifts: [
-        {name: 'squat', weight: 45},
-        {name: 'bench', weight: 45}
-      ]
-    }));
-  });
+    it('should add lift with weight', () => {
+      const action = {type: 'ADD_LIFT', name: 'squat', weight: 100};
+      const nextState = reducer(undefined, action);
 
-  it('should add lift with weight', () => {
-    const action = {type: 'ADD_LIFT', name: 'squat', weight: 100};
-    const nextState = reducer(undefined, action);
-
-    expect(nextState).to.equal(fromJS({
-      lifts: [{name: 'squat', weight: 100}]
-    }));
-  });
-
-  it('should not add duplicate lifts', () => {
-    const state = Map({
-      lifts: List.of(
-        Map({name: 'squat', weight: 45}),
-        Map({name: 'bench', weight: 45})
-      )
+      expect(nextState).to.equal(fromJS({
+        lifts: [{name: 'squat', weight: 100}]
+      }));
     });
-    const action = {type: 'ADD_LIFT', name: 'bench'};
-    const nextState = reducer(state, action);
 
-    expect(nextState).to.equal(state);
+    it('should not add duplicate lifts', () => {
+      const state = Map({
+        lifts: List.of(
+          Map({name: 'squat', weight: 45}),
+          Map({name: 'bench', weight: 45})
+        )
+      });
+      const action = {type: 'ADD_LIFT', name: 'bench'};
+      const nextState = reducer(state, action);
+
+      expect(nextState).to.equal(state);
+    });
   });
 
-  it('should increment lift weight', () => {
-    const state = fromJS({
-      lifts: [{name: 'squat', weight: 45}]
-    });
-    const action = {type: 'INCREMENT_WEIGHT', index: 0};
-    const nextState = reducer(state, action);
+  describe('INCREMENT_WEIGHT', () => {
+    it('should increment lift weight', () => {
+      const state = fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      });
+      const action = {type: 'INCREMENT_WEIGHT', index: 0};
+      const nextState = reducer(state, action);
 
-    expect(nextState).to.equal(fromJS({
-      lifts: [{name: 'squat', weight: 50}]
-    }));
+      expect(nextState).to.equal(fromJS({
+        lifts: [{name: 'squat', weight: 50}]
+      }));
+    });
+
+    it('should return same state if index not found', () => {
+      const state = fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      });
+      const action = {type: 'INCREMENT_WEIGHT', index: 1};
+      const nextState = reducer(state, action);
+
+      expect(nextState).to.equal(fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      }));
+    });
   });
 
-  it('should return same state if index not found', () => {
-    const state = fromJS({
-      lifts: [{name: 'squat', weight: 45}]
+  describe('DECREMENT_WEIGHT', () => {
+    it('should decrement lift weight', () => {
+      const state = fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      });
+      const action = {type: 'DECREMENT_WEIGHT', index: 0};
+      const nextState = reducer(state, action);
+
+      expect(nextState).to.equal(fromJS({
+        lifts: [{name: 'squat', weight: 40}]
+      }));
     });
-    const action = {type: 'INCREMENT_WEIGHT', index: 1};
-    const nextState = reducer(state, action);
 
-    expect(nextState).to.equal(fromJS({
-      lifts: [{name: 'squat', weight: 45}]
-    }));
-  });
+    it('should return same state if index not found', () => {
+      const state = fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      });
+      const action = {type: 'DECREMENT_WEIGHT', index: 1};
+      const nextState = reducer(state, action);
 
-  it('should decrement lift weight', () => {
-    const state = fromJS({
-      lifts: [{name: 'squat', weight: 45}]
+      expect(nextState).to.equal(fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      }));
     });
-    const action = {type: 'DECREMENT_WEIGHT', index: 0};
-    const nextState = reducer(state, action);
-
-    expect(nextState).to.equal(fromJS({
-      lifts: [{name: 'squat', weight: 40}]
-    }));
-  });
-
-  it('should return same state if index not found', () => {
-    const state = fromJS({
-      lifts: [{name: 'squat', weight: 45}]
-    });
-    const action = {type: 'DECREMENT_WEIGHT', index: 1};
-    const nextState = reducer(state, action);
-
-    expect(nextState).to.equal(fromJS({
-      lifts: [{name: 'squat', weight: 45}]
-    }));
   });
 });
