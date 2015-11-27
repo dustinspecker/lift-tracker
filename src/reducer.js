@@ -40,11 +40,7 @@ function setWeight(state, name, weight) {
   );
 }
 
-export default function (state = INITIAL_STATE, action) {
-  if (!action) {
-    return state;
-  }
-
+export default function (state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case 'ADD_LIFT':
      return addLift(state, action.name);
