@@ -48,11 +48,11 @@ function incrementWeight(state, index) {
 export default function (state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case 'ADD_LIFT':
-     return addLift(state, action.name, action.weight);
+      return addLift(state, action.name, action.weight);
     case 'DECREMENT_WEIGHT':
-     return decrementWeight(state, action.index);
+      return decrementWeight(state, action.index);
     case 'INCREMENT_WEIGHT':
-     return incrementWeight(state, action.index);
+      return incrementWeight(state, action.index);
   }
 
   return state;
