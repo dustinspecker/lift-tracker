@@ -67,4 +67,16 @@ describe('reducer', () => {
       lifts: [{name: 'squat', weight: 200}]
     }));
   });
+
+  it('should return same state if lift not found', () => {
+    const state = fromJS({
+      lifts: [{name: 'squat'}]
+    });
+    const action = {type: 'SET_WEIGHT', name: 'bench', weight: 200};
+    const nextState = reducer(state, action);
+
+    expect(nextState).to.equal(fromJS({
+      lifts: [{name: 'squat'}]
+    }));
+  });
 });

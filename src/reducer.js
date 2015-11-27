@@ -23,10 +23,15 @@ function setWeight(state, name, weight) {
     ['lifts'],
     List(),
     lifts => {
-      return lifts.update(
-        lifts.findIndex(lift => lift.get('name') === name),
-        lift => lift.set('weight', weight)
-      );
+      const foundLiftIndex = lifts.findIndex(lift => lift.get('name') === name);
+      if (foundLiftIndex > -1) {
+        return lifts.update(
+          foundLiftIndex,
+          lift => lift.set('weight', weight)
+        );
+      }
+
+      return lifts;
     }
   );
 }
