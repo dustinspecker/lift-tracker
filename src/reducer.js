@@ -1,5 +1,9 @@
 import {List, Map} from 'immutable';
 
+const INITIAL_STATE = Map({
+  lifts: List()
+});
+
 function addLift(state, name) {
   const existingLift = (
     state
@@ -36,13 +40,7 @@ function setWeight(state, name, weight) {
   );
 }
 
-export default function (state, action) {
-  if (!state) {
-    state = Map({
-      lifts: List()
-    });
-  }
-
+export default function (state = INITIAL_STATE, action) {
   if (!action) {
     return state;
   }
