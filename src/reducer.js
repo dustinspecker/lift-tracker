@@ -15,8 +15,8 @@ function addLift(state, name) {
     return state;
   }
 
-  return state.updateIn(
-    ['lifts'],
+  return state.update(
+   'lifts',
     List(),
     lifts => lifts.push(Map({name, weight: 45}))
   );
