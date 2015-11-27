@@ -1,10 +1,9 @@
 import {expect} from 'chai';
-import React from 'react/addons';
+import React from 'react';
+import {renderIntoDocument, scryRenderedComponentsWithType} from 'react-addons-test-utils';
 
 import LiftLabel from '../../src/components/lift-label';
 import LiftList from '../../src/components/lift-list';
-
-const {renderIntoDocument, scryRenderedComponentsWithType} = React.addons.TestUtils;
 
 describe('LiftList', () => {
   it('should list lifts', () => {

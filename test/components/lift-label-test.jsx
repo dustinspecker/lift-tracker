@@ -1,9 +1,8 @@
 import {expect} from 'chai';
-import React from 'react/addons';
+import {findRenderedDOMComponentWithTag, renderIntoDocument} from 'react-addons-test-utils';
+import React from 'react';
 
 import LiftLabel from '../../src/components/lift-label';
-
-const {findRenderedDOMComponentWithTag, renderIntoDocument} = React.addons.TestUtils;
 
 describe('LiftLabel', () => {
   it('should display name of lift', () => {
