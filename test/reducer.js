@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {fromJS, Map} from 'immutable';
+import {fromJS, List, Map} from 'immutable';
 
 import reducer from '../src/reducer';
 
@@ -10,5 +10,49 @@ describe('reducer', () => {
     });
 
     expect(reducer()).to.equal(state);
+  });
+
+  it('should handle add lift', () => {
+    const state = Map();
+    const action = {type: 'ADD_LIFT', name: 'squat'};
+    const nextState = reducer(state, action);
+
+    expect(nextState).to.equal(fromJS({
+      lifts: [
+        {
+          name: 'squat'
+        }
+      ]
+    }));
+  });
+
+  it('should handle adding multiple lifts', () => {
+    const state = Map({
+      lifts: List.of(Map({
+        name: 'squat'
+      }))
+    });
+    const action = {type: 'ADD_LIFT', name: 'bench'};
+    const nextState = reducer(state, action);
+
+    expect(nextState).to.equal(fromJS({
+      lifts: [
+        {name: 'squat'},
+        {name: 'bench'}
+      ]
+    }));
+  });
+
+  it('should not add duplicate lifts', () => {
+    const state = Map({
+      lifts: List.of(
+        Map({name: 'squat'}),
+        Map({name: 'bench'})
+      )
+    });
+    const action = {type: 'ADD_LIFT', name: 'bench'};
+    const nextState = reducer(state, action);
+
+    expect(nextState).to.equal(state);
   });
 });
