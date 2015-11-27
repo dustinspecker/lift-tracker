@@ -13,9 +13,8 @@ describe('reducer', () => {
   });
 
   it('should handle add lift', () => {
-    const state = Map();
     const action = {type: 'ADD_LIFT', name: 'squat'};
-    const nextState = reducer(state, action);
+    const nextState = reducer(undefined, action);
 
     expect(nextState).to.equal(fromJS({
       lifts: [
