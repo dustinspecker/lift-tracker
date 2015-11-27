@@ -7,12 +7,16 @@ import LiftList from '../../src/components/lift-list';
 
 describe('LiftList', () => {
   it('should list lifts', () => {
+    const lifts = [
+      {name: 'squat', weight: 200},
+      {name: 'bench', weight: 100},
+      {name: 'deadlift', weight: 300}
+    ];
     const component = renderIntoDocument(
-      <LiftList
-        lifts={['squat', 'bench', 'dead']} />
+      <LiftList lifts={lifts} />
     );
-    const lifts = scryRenderedComponentsWithType(component, LiftLabel);
+    const liftLabels = scryRenderedComponentsWithType(component, LiftLabel);
 
-    expect(lifts.length).to.equal(3);
+    expect(liftLabels.length).to.equal(3);
   });
 });
