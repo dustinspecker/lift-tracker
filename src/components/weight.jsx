@@ -1,9 +1,15 @@
 import React from 'react';
 
 export default React.createClass({
+  handleChange() {},
   render() {
     return <div>
-      <input type='text' value={this.props.weight} />
+      <input
+        type='text'
+        onChange={this.handleChange}
+        value={this.props.weight}
+      />
+      <button ref='increment' onClick={this.props.increment}>+</button>
     </div>;
   }
 });
