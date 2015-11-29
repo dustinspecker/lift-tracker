@@ -32,29 +32,13 @@ function adjustWeight(lifts, index, weightChange) {
 export default function (state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case 'ADD_LIFT':
-      return state.update(
-        'lifts',
-        List(),
-        lifts => addLift(lifts, action.name, action.weight)
-      );
+      return state.set('lifts', addLift(state.get('lifts'), action.name, action.weight));
     case 'DECREMENT_WEIGHT':
-      return state.update(
-        'lifts',
-        List(),
-        lifts => adjustWeight(lifts, action.index, -5)
-      );
+      return state.set('lifts', adjustWeight(state.get('lifts'), action.index, -5));
     case 'INCREMENT_WEIGHT':
-      return state.update(
-        'lifts',
-        List(),
-        lifts => adjustWeight(lifts, action.index, 5)
-      );
+      return state.set('lifts', adjustWeight(state.get('lifts'), action.index, 5));
     case 'REMOVE_LIFT':
-      return state.update(
-        'lifts',
-        List(),
-        lifts => removeLift(lifts, action.index)
-      );
+      return state.set('lifts', removeLift(state.get('lifts'), action.index));
   }
 
   return state;
