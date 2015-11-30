@@ -18,25 +18,14 @@ function removeLift(lifts, index) {
   return lifts.delete(index);
 }
 
-function adjustWeight(lifts, index, weightChange) {
+function adjustWeight(lifts, index, cb) {
   if (lifts.size <= index) {
     return lifts;
   }
 
   return lifts.update(
     index,
-    lift => lift.set('weight', lift.get('weight') + weightChange)
-  );
-}
-
-function setWeight(lifts, index, weight) {
-  if (lifts.size <= index) {
-    return lifts;
-  }
-
-  return lifts.update(
-    index,
-    lift => lift.set('weight', weight)
+    lift => lift.set('weight', cb(lift.get('weight')))
   );
 }
 
@@ -45,11 +34,11 @@ export default function (state = INITIAL_STATE, action = {}) {
     case 'ADD_LIFT':
       return state.set('lifts', addLift(state.get('lifts'), action.name, action.weight));
     case 'DECREMENT_WEIGHT':
-      return state.set('lifts', adjustWeight(state.get('lifts'), action.index, -5));
+      return state.set('lifts', adjustWeight(state.get('lifts'), action.index, weight => weight - 5));
     case 'INCREMENT_WEIGHT':
-      return state.set('lifts', adjustWeight(state.get('lifts'), action.index, 5));
+      return state.set('lifts', adjustWeight(state.get('lifts'), action.index, weight => weight + 5));
     case 'SET_WEIGHT':
-      return state.set('lifts', setWeight(state.get('lifts'), action.index, action.weight));
+      return state.set('lifts', adjustWeight(state.get('lifts'), action.index, () => action.weight));
     case 'REMOVE_LIFT':
       return state.set('lifts', removeLift(state.get('lifts'), action.index));
   }
