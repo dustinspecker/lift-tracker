@@ -27,4 +27,17 @@ describe('Weight', () => {
 
     expect(incremented).to.equal(true);
   });
+
+  it('should call decrement handler when decrement button is clicked', () => {
+    let decremented = false;
+    const decrement = () => decremented = true;
+    const component = renderIntoDocument(
+      <Weight weight='45' decrement={decrement} />
+    );
+    const decrementButton = findDOMNode(component.refs.decrement);
+
+    Simulate.click(decrementButton);
+
+    expect(decremented).to.equal(true);
+  });
 });

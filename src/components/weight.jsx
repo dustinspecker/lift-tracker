@@ -10,6 +10,7 @@ export default React.createClass({
         value={this.props.weight}
       />
       <button ref='increment' onClick={this.props.increment}>+</button>
+      <button ref='decrement' onClick={this.props.decrement}>-</button>
     </div>;
   }
 });
