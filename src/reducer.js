@@ -14,10 +14,6 @@ function addLift(lifts, name, weight = 45) {
   return lifts.push(Map({name, weight}))
 }
 
-function removeLift(lifts, index) {
-  return lifts.delete(index);
-}
-
 function adjustWeight(lifts, index, cb) {
   if (lifts.size <= index) {
     return lifts;
@@ -27,6 +23,10 @@ function adjustWeight(lifts, index, cb) {
     index,
     lift => lift.set('weight', cb(lift.get('weight')))
   );
+}
+
+function removeLift(lifts, index) {
+  return lifts.delete(index);
 }
 
 export default function (state = INITIAL_STATE, action = {}) {
