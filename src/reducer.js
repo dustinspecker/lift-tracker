@@ -37,10 +37,10 @@ export default function (state = INITIAL_STATE, action = {}) {
       return state.set('lifts', adjustWeight(state.get('lifts'), action.index, weight => weight - 5));
     case 'INCREMENT_WEIGHT':
       return state.set('lifts', adjustWeight(state.get('lifts'), action.index, weight => weight + 5));
-    case 'SET_WEIGHT':
-      return state.set('lifts', adjustWeight(state.get('lifts'), action.index, () => action.weight));
     case 'REMOVE_LIFT':
       return state.set('lifts', removeLift(state.get('lifts'), action.index));
+    case 'SET_WEIGHT':
+      return state.set('lifts', adjustWeight(state.get('lifts'), action.index, () => action.weight));
   }
 
   return state;
