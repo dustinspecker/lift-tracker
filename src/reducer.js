@@ -29,6 +29,17 @@ function adjustWeight(lifts, index, weightChange) {
   );
 }
 
+function setWeight(lifts, index, weight) {
+  if (lifts.size <= index) {
+    return lifts;
+  }
+
+  return lifts.update(
+    index,
+    lift => lift.set('weight', weight)
+  );
+}
+
 export default function (state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case 'ADD_LIFT':
@@ -37,6 +48,8 @@ export default function (state = INITIAL_STATE, action = {}) {
       return state.set('lifts', adjustWeight(state.get('lifts'), action.index, -5));
     case 'INCREMENT_WEIGHT':
       return state.set('lifts', adjustWeight(state.get('lifts'), action.index, 5));
+    case 'SET_WEIGHT':
+      return state.set('lifts', setWeight(state.get('lifts'), action.index, action.weight));
     case 'REMOVE_LIFT':
       return state.set('lifts', removeLift(state.get('lifts'), action.index));
   }

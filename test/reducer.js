@@ -145,4 +145,30 @@ describe('reducer', () => {
       }));
     });
   });
+
+  describe('SET_WEIGHT', () => {
+    it('should set lift weight', () => {
+      const state = fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      });
+      const action = {type: 'SET_WEIGHT', index: 0, weight: 100};
+      const nextState = reducer(state, action);
+
+      expect(nextState).to.equal(fromJS({
+        lifts: [{name: 'squat', weight: 100}]
+      }));
+    });
+
+    it('should return same state if index not found', () => {
+      const state = fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      });
+      const action = {type: 'SET_WEIGHT', index: 1, weight: 100};
+      const nextState = reducer(state, action);
+
+      expect(nextState).to.equal(fromJS({
+        lifts: [{name: 'squat', weight: 45}]
+      }));
+    });
+  });
 });
