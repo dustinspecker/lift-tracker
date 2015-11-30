@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {fromJS, List, Map} from 'immutable';
+import {fromJS} from 'immutable';
 
 import reducer from '../src/reducer';
 
@@ -18,21 +18,13 @@ describe('reducer', () => {
       const nextState = reducer(undefined, action);
 
       expect(nextState).to.equal(fromJS({
-        lifts: [
-          {
-            name: 'squat',
-            weight: 45
-          }
-        ]
+        lifts: [{name: 'squat', weight: 45}]
       }));
     });
 
     it('should handle adding multiple lifts', () => {
-      const state = Map({
-        lifts: List.of(Map({
-          name: 'squat',
-          weight: 45
-        }))
+      const state = fromJS({
+        lifts: [{name: 'squat', weight: 45 }]
       });
       const action = {type: 'ADD_LIFT', name: 'bench'};
       const nextState = reducer(state, action);
@@ -55,11 +47,11 @@ describe('reducer', () => {
     });
 
     it('should not add duplicate lifts', () => {
-      const state = Map({
-        lifts: List.of(
-          Map({name: 'squat', weight: 45}),
-          Map({name: 'bench', weight: 45})
-        )
+      const state = fromJS({
+        lifts: [
+          {name: 'squat', weight: 45},
+          {name: 'bench', weight: 45}
+        ]
       });
       const action = {type: 'ADD_LIFT', name: 'bench'};
       const nextState = reducer(state, action);
