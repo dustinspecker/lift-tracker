@@ -24,8 +24,8 @@ export default React.createClass({
   render() {
     return <div>
       <input
-        type='text'
         onChange={this.handleChange}
+        type='number'
         value={this.props.weight}
       />
       <button onClick={this.delete}>Delete</button>
