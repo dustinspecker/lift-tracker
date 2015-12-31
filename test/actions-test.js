@@ -1,6 +1,6 @@
-import {expect} from 'chai';
+import {expect} from 'chai'
 
-import * as actions from '../src/actions';
+import * as actions from '../src/actions'
 
 describe('actions', () => {
   it('should return add lift action', () => {
@@ -8,6 +8,6 @@ describe('actions', () => {
       type: 'ADD_LIFT',
       name: 'squat',
       weight: 100
-    });
-  });
-});
+    })
+  })
+})

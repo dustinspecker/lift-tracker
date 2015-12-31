@@ -1,8 +1,8 @@
-import {connect} from 'react-redux';
-import React from 'react';
+import {connect} from 'react-redux'
+import React from 'react'
 
-import LiftLabel from './lift-label';
-import Weight from './weight';
+import LiftLabel from './lift-label'
+import Weight from './weight'
 
 const LiftList = ({lifts}) =>
   <div>
@@ -12,8 +12,8 @@ const LiftList = ({lifts}) =>
         <Weight weight={lift.weight} />
       </div>
     )}
-  </div>;
+  </div>
 
-const mapStateToProps = state => ({lifts: state.get('lifts').toJS()});
+const mapStateToProps = state => ({lifts: state.get('lifts').toJS()})
 
-export const LiftListContainer = connect(mapStateToProps)(LiftList);
+export const LiftListContainer = connect(mapStateToProps)(LiftList)

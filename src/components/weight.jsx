@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default React.createClass({
   handleChange() {},
@@ -11,6 +11,6 @@ export default React.createClass({
       />
       <button ref='increment' onClick={this.props.increment}>+</button>
       <button ref='decrement' onClick={this.props.decrement}>-</button>
-    </div>;
+    </div>
   }
-});
+})

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 export default React.createClass({
   render() {
-    return <div>{this.props.name}</div>;
+    return <div>{this.props.name}</div>
   }
-});
+})
