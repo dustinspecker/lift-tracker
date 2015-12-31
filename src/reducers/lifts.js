@@ -21,8 +21,6 @@ const adjustWeight = (lifts, index, cb) => {
   )
 }
 
-const removeLift = (lifts, index) => lifts.delete(index)
-
 export default (lifts = List(), {index, name, type, weight} = {}) => {
   switch (type) {
     case 'ADD_LIFT':
@@ -32,7 +30,7 @@ export default (lifts = List(), {index, name, type, weight} = {}) => {
     case 'INCREMENT_WEIGHT':
       return adjustWeight(lifts, index, weight => weight + 5)
     case 'REMOVE_LIFT':
-      return removeLift(lifts, index)
+      return lifts.delete(index)
     case 'SET_WEIGHT':
       return adjustWeight(lifts, index, () => weight)
   }
