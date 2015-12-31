@@ -24,4 +24,11 @@ describe('actions', () => {
       index: 1
     })
   })
+
+  it('should return remove lift action', () => {
+    expect(actions.removeLift(1)).to.eql({
+      type: 'REMOVE_LIFT',
+      index: 1
+    })
+  })
 })

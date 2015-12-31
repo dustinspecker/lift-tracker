@@ -13,3 +13,8 @@ export const incrementWeight = index => ({
   type: 'INCREMENT_WEIGHT',
   index
 })
+
+export const removeLift = index => ({
+  type: 'REMOVE_LIFT',
+  index
+})
