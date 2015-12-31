@@ -3,6 +3,7 @@ import React from 'react'
 export default React.createClass({
   propTypes: {
     decrement: React.PropTypes.func.isRequired,
+    delete: React.PropTypes.func.isRequired,
     increment: React.PropTypes.func.isRequired,
     index: React.PropTypes.number.isRequired,
     weight: React.PropTypes.oneOfType([
@@ -12,6 +13,9 @@ export default React.createClass({
   },
   decrement() {
     return this.props.decrement(this.props.index)
+  },
+  delete() {
+    return this.props.delete(this.props.index)
   },
   increment() {
     return this.props.increment(this.props.index)
@@ -24,8 +28,9 @@ export default React.createClass({
         onChange={this.handleChange}
         value={this.props.weight}
       />
-      <button ref='increment' onClick={this.increment}>+</button>
-      <button ref='decrement' onClick={this.decrement}>-</button>
+      <button onClick={this.delete}>Delete</button>
+      <button onClick={this.increment}>+</button>
+      <button onClick={this.decrement}>-</button>
     </div>
   }
 })

@@ -47,7 +47,7 @@ describe('LiftList', () => {
       <LiftList store={store} />
     )
     const weightInputs = scryRenderedComponentsWithType(component, Weight)
-    const decrementButton = scryRenderedDOMComponentsWithTag(weightInputs[1], 'button')[1]
+    const decrementButton = scryRenderedDOMComponentsWithTag(weightInputs[1], 'button')[2]
 
     Simulate.click(decrementButton)
     expect(decrementActionDispatched).to.eql(true)
@@ -60,9 +60,22 @@ describe('LiftList', () => {
       <LiftList store={store} />
     )
     const weightInputs = scryRenderedComponentsWithType(component, Weight)
-    const incrementButton = scryRenderedDOMComponentsWithTag(weightInputs[0], 'button')[0]
+    const incrementButton = scryRenderedDOMComponentsWithTag(weightInputs[0], 'button')[1]
 
     Simulate.click(incrementButton)
     expect(incrementActionDispatched).to.eql(true)
+  })
+
+  it('should dispatch remove lift action when delete lift button is clicked', () => {
+    let removeActionDispatched = false
+    store.dispatch = ({index, type}) => removeActionDispatched = index === 0 && type === 'REMOVE_LIFT'
+    const component = renderIntoDocument(
+      <LiftList store={store} />
+    )
+    const weightInputs = scryRenderedComponentsWithType(component, Weight)
+    const removeButton = scryRenderedDOMComponentsWithTag(weightInputs[0], 'button')[0]
+
+    Simulate.click(removeButton)
+    expect(removeActionDispatched).to.eql(true)
   })
 })
