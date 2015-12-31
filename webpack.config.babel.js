@@ -1,6 +1,6 @@
-var webpack = require('webpack')
+import webpack from 'webpack'
 
-module.exports = {
+export default {
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
