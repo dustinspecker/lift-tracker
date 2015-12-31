@@ -1,4 +1,5 @@
 import {connect} from 'react-redux'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 import React from 'react'
 
 import {decrementWeight, incrementWeight} from '../actions'
@@ -7,7 +8,7 @@ import Weight from './weight'
 
 const LiftList = ({decrement, increment, lifts}) =>
   <div>
-    {lifts.map((lift, index) =>
+    {lifts.toJS().map((lift, index) =>
       <div key={lift.name}>
         <LiftLabel name={lift.name} />
         <Weight
@@ -23,8 +24,8 @@ const LiftList = ({decrement, increment, lifts}) =>
 LiftList.propTypes = {
   decrement: React.PropTypes.func.isRequired,
   increment: React.PropTypes.func.isRequired,
-  lifts: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
+  lifts: ImmutablePropTypes.listOf(
+    ImmutablePropTypes.contains({
       name: React.PropTypes.string.isRequired,
       weight: React.PropTypes.oneOfType([
         React.PropTypes.number,
@@ -34,7 +35,7 @@ LiftList.propTypes = {
   ).isRequired
 }
 
-const mapStateToProps = ({lifts}) => ({lifts: lifts.toJS()})
+const mapStateToProps = ({lifts}) => ({lifts})
 
 const actions = {
   decrement: decrementWeight,
