@@ -16,7 +16,7 @@ describe('LiftList', () => {
 
     const store = {
       getState() {
-        return Map({lifts})
+        return {lifts}
       },
       subscribe() {
       },

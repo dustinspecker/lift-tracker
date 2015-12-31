@@ -14,6 +14,6 @@ const LiftList = ({lifts}) =>
     )}
   </div>
 
-const mapStateToProps = state => ({lifts: state.get('lifts').toJS()})
+const mapStateToProps = ({lifts}) => ({lifts: lifts.toJS()})
 
 export default connect(mapStateToProps)(LiftList)
