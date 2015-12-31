@@ -1,30 +1,16 @@
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import webpack from 'webpack'
 
+import common from './webpack-common'
+
+common.entry.splice(0, 0,
+  'webpack-dev-server/client?http://localhost:8080',
+  'webpack/hot/only-dev-server'
+)
+
 export default {
+  ...common,
   devtool: 'cheap-module-source-map',
-  entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './src/index.jsx'
-  ],
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'react-hot!babel'
-      }
-    ]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
   devServer: {
     contentBase: './dist',
     hot: true
