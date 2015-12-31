@@ -8,7 +8,12 @@ import Weight from '../../src/components/weight'
 describe('Weight', () => {
   it('should display weight in input', () => {
     const component = renderIntoDocument(
-      <Weight weight='45' />
+      <Weight
+        decrement={() => {}}
+        increment={() => {}}
+        index={0}
+        weight='45'
+      />
     )
     const weightInput = findRenderedDOMComponentWithTag(component, 'input')
 
@@ -19,7 +24,12 @@ describe('Weight', () => {
     let incremented = false
     const increment = index => incremented = index === 1
     const component = renderIntoDocument(
-      <Weight index={1} weight='45' increment={increment} />
+      <Weight
+        decrement={() => {}}
+        increment={increment}
+        index={1}
+        weight='45'
+      />
     )
     const incrementButton = findDOMNode(component.refs.increment)
 
@@ -32,7 +42,12 @@ describe('Weight', () => {
     let decremented = false
     const decrement = index => decremented = index === 2
     const component = renderIntoDocument(
-      <Weight index={2} weight='45' decrement={decrement} />
+      <Weight
+        decrement={decrement}
+        increment={() => {}}
+        index={2}
+        weight='45'
+      />
     )
     const decrementButton = findDOMNode(component.refs.decrement)
 
