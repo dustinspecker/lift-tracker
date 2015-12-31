@@ -10,7 +10,10 @@ export default {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'react-hot!babel'
+        loaders: [
+          'react-hot',
+          'babel'
+        ]
       }
     ]
   },
