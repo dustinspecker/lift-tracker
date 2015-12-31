@@ -1,19 +1,33 @@
 import {connect} from 'react-redux'
 import React from 'react'
 
+import {decrementWeight, incrementWeight} from '../actions'
 import LiftLabel from './lift-label'
 import Weight from './weight'
 
-const LiftList = ({lifts}) =>
+const LiftList = ({decrement, increment, lifts}) =>
   <div>
-    {lifts.map(lift =>
+    {lifts.map((lift, index) =>
       <div key={lift.name}>
         <LiftLabel name={lift.name} />
-        <Weight weight={lift.weight} />
+        <Weight
+          decrement={decrement}
+          increment={increment}
+          index={index}
+          weight={lift.weight}
+        />
       </div>
     )}
   </div>
 
 const mapStateToProps = ({lifts}) => ({lifts: lifts.toJS()})
 
-export default connect(mapStateToProps)(LiftList)
+const actions = {
+  decrement: decrementWeight,
+  increment: incrementWeight
+}
+
+export default connect(
+  mapStateToProps,
+  actions
+)(LiftList)
