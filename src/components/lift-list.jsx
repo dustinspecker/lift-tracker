@@ -20,6 +20,20 @@ const LiftList = ({decrement, increment, lifts}) =>
     )}
   </div>
 
+LiftList.propTypes = {
+  decrement: React.PropTypes.func.isRequired,
+  increment: React.PropTypes.func.isRequired,
+  lifts: React.PropTypes.arrayOf(
+    React.PropTypes.shape({
+      name: React.PropTypes.string.isRequired,
+      weight: React.PropTypes.oneOfType([
+        React.PropTypes.number,
+        React.PropTypes.string
+      ]).isRequired
+    })
+  ).isRequired
+}
+
 const mapStateToProps = ({lifts}) => ({lifts: lifts.toJS()})
 
 const actions = {
