@@ -4,7 +4,7 @@ const INITIAL_STATE = Map({
   lifts: List()
 })
 
-function addLift(lifts, name, weight = 45) {
+const addLift = (lifts, name, weight = 45) => {
   const existingLift = lifts.find(lift => lift.get('name') === name)
 
   if (existingLift) {
@@ -14,7 +14,7 @@ function addLift(lifts, name, weight = 45) {
   return lifts.push(Map({name, weight}))
 }
 
-function adjustWeight(lifts, index, cb) {
+const adjustWeight = (lifts, index, cb) => {
   if (lifts.size <= index) {
     return lifts
   }
@@ -25,11 +25,9 @@ function adjustWeight(lifts, index, cb) {
   )
 }
 
-function removeLift(lifts, index) {
-  return lifts.delete(index)
-}
+const removeLift = (lifts, index) => lifts.delete(index)
 
-export default function (state = INITIAL_STATE, action = {}) {
+export default (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case 'ADD_LIFT':
       return state.set('lifts', addLift(state.get('lifts'), action.name, action.weight))
