@@ -17,9 +17,9 @@ describe('Weight', () => {
 
   it('should call increment handler when increment button is clicked', () => {
     let incremented = false
-    const increment = () => incremented = true
+    const increment = index => incremented = index === 1
     const component = renderIntoDocument(
-      <Weight weight='45' increment={increment} />
+      <Weight index={1} weight='45' increment={increment} />
     )
     const incrementButton = findDOMNode(component.refs.increment)
 
@@ -30,9 +30,9 @@ describe('Weight', () => {
 
   it('should call decrement handler when decrement button is clicked', () => {
     let decremented = false
-    const decrement = () => decremented = true
+    const decrement = index => decremented = index === 2
     const component = renderIntoDocument(
-      <Weight weight='45' decrement={decrement} />
+      <Weight index={2} weight='45' decrement={decrement} />
     )
     const decrementButton = findDOMNode(component.refs.decrement)
 
