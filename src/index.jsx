@@ -1,4 +1,5 @@
 import {createStore} from 'redux'
+import {Provider} from 'react-redux'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -14,6 +15,8 @@ store.dispatch(addLift('bench', 100))
 store.dispatch(addLift('deadlift', 300))
 
 ReactDOM.render(
-  <LiftList store={store} />,
+  <Provider store={store}>
+    <LiftList />
+  </Provider>,
   document.getElementById('app')
 )
