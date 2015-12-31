@@ -1,7 +1,11 @@
 import {expect} from 'chai'
 import {findDOMNode} from 'react-dom'
+import {
+  findRenderedDOMComponentWithTag,
+  renderIntoDocument,
+  Simulate
+} from 'react-addons-test-utils'
 import React from 'react'
-import {renderIntoDocument, findRenderedDOMComponentWithTag, Simulate} from 'react-addons-test-utils'
 
 import Weight from '../../src/components/weight'
 
