@@ -4,7 +4,7 @@ import React from 'react'
 import {renderIntoDocument, scryRenderedComponentsWithType} from 'react-addons-test-utils'
 
 import LiftLabel from '../../src/components/lift-label'
-import {LiftListContainer} from '../../src/components/lift-list'
+import LiftList from '../../src/components/lift-list'
 
 describe('LiftList', () => {
   it('should list lifts', () => {
@@ -25,7 +25,7 @@ describe('LiftList', () => {
     }
 
     const component = renderIntoDocument(
-      <LiftListContainer store={store} />
+      <LiftList store={store} />
     )
     const liftLabels = scryRenderedComponentsWithType(component, LiftLabel)
 

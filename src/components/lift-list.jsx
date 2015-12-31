@@ -16,4 +16,4 @@ const LiftList = ({lifts}) =>
 
 const mapStateToProps = state => ({lifts: state.get('lifts').toJS()})
 
-export const LiftListContainer = connect(mapStateToProps)(LiftList)
+export default connect(mapStateToProps)(LiftList)
