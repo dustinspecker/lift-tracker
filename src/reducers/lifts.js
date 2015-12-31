@@ -33,7 +33,7 @@ export default (lifts = List(), {index, name, type, weight} = {}) => {
       return lifts.delete(index)
     case 'SET_WEIGHT':
       return adjustWeight(lifts, index, () => weight)
+    default:
+      return lifts
   }
-
-  return lifts
 }
