@@ -11,6 +11,13 @@ describe('actions', () => {
     })
   })
 
+  it('should return decrement weight action', () => {
+    expect(actions.decrementWeight(1)).to.eql({
+      type: 'DECREMENT_WEIGHT',
+      index: 1
+    })
+  })
+
   it('should return increment weight action', () => {
     expect(actions.incrementWeight(1)).to.eql({
       type: 'INCREMENT_WEIGHT',

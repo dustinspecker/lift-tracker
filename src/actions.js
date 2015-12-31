@@ -4,6 +4,11 @@ export const addLift = (name, weight) => ({
   weight
 })
 
+export const decrementWeight = index => ({
+  type: 'DECREMENT_WEIGHT',
+  index
+})
+
 export const incrementWeight = index => ({
   type: 'INCREMENT_WEIGHT',
   index
