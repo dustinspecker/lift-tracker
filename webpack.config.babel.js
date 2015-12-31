@@ -1,3 +1,4 @@
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import webpack from 'webpack'
 
 export default {
@@ -29,6 +30,15 @@ export default {
     hot: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new BrowserSyncPlugin({
+        host: 'localhost',
+        port: 3000,
+        proxy: 'http://localhost:8080/'
+      },
+      {
+        reload: false
+      }
+    )
   ]
 }
