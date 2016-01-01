@@ -4,7 +4,7 @@
   "description": "Track lifts",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require ./test/test-helper.js 'test/**/*.js'"
+    "test": "ava --require babel-core/register"
   },
   "repository": "dustinspecker/lift-tracker.git",
   "author": "Dustin Specker",
@@ -20,6 +20,7 @@
     "redux": "^3.0.4"
   },
   "devDependencies": {
+    "ava": "^0.9.1",
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
     "babel-plugin-syntax-object-rest-spread": "^6.3.13",
@@ -27,10 +28,7 @@
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "browser-sync-webpack-plugin": "^1.0.1",
-    "chai": "^3.4.1",
-    "chai-immutable": "^1.5.3",
     "jsdom": "^7.1.0",
-    "mocha": "^2.3.4",
     "react-addons-test-utils": "^0.14.3",
     "react-hot-loader": "^1.3.0",
     "react-redux": "^4.0.0",

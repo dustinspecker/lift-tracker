@@ -1,8 +1,4 @@
-import chai from 'chai'
-import chaiImmutable from 'chai-immutable'
 import jsdom from 'jsdom'
-
-chai.use(chaiImmutable)
 
 const doc = jsdom.jsdom('<!DOCTYPE html><html><body></body></html>')
 const win = doc.defaultView
