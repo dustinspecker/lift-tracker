@@ -4,7 +4,7 @@
   "description": "Track lifts",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require ./test/test-helper.js 'test/**/*.@(js|jsx)'"
+    "test": "mocha --compilers js:babel-core/register --require ./test/test-helper.js 'test/**/*.js'"
   },
   "repository": "dustinspecker/lift-tracker.git",
   "author": "Dustin Specker",
