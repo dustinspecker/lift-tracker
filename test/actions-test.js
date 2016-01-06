@@ -30,3 +30,11 @@ test('should return remove lift action', t => {
     index: 1
   })
 })
+
+test('should return set weight action', t => {
+  t.same(actions.setWeight(2, 100), {
+    type: 'SET_WEIGHT',
+    index: 2,
+    weight: 100
+  })
+})
