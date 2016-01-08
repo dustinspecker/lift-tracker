@@ -1,9 +1,7 @@
-import {connect} from 'react-redux'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import React from 'react'
 
-import {decrementWeight, incrementWeight, removeLift, setWeight} from '../actions'
 import LiftLabel from './lift-label'
 import Weight from './weight'
 
@@ -43,16 +41,4 @@ LiftList.propTypes = {
   ).isRequired
 }
 
-const mapStateToProps = ({lifts}) => ({lifts})
-
-const actions = {
-  change: setWeight,
-  decrement: decrementWeight,
-  deleteHandler: removeLift,
-  increment: incrementWeight
-}
-
-export default connect(
-  mapStateToProps,
-  actions
-)(LiftList)
+export default LiftList

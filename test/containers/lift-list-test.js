@@ -10,7 +10,7 @@ import test from 'ava'
 
 import '../_helper'
 import LiftLabel from '../../src/components/lift-label'
-import LiftList from '../../src/components/lift-list'
+import LiftList from '../../src/containers/lift-list'
 import Weight from '../../src/components/weight'
 
 let lifts
