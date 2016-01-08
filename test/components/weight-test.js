@@ -15,9 +15,9 @@ test('should display weight in input', t => {
   const component = renderIntoDocument(
     <Weight
       change={() => {}}
-      decrement={t => {}}
-      delete={t => {}}
-      increment={t => {}}
+      decrement={() => {}}
+      delete={() => {}}
+      increment={() => {}}
       index={0}
       weight='45'
     />
@@ -33,9 +33,9 @@ test('should call delete handler when delete button is click', t => {
   const component = renderIntoDocument(
     <Weight
       change={() => {}}
-      decrement={t => {}}
+      decrement={() => {}}
       delete={deleteHandler}
-      increment={t => {}}
+      increment={() => {}}
       index={1}
       weight='45'
     />
@@ -53,8 +53,8 @@ test('should call increment handler when increment button is clicked', t => {
   const component = renderIntoDocument(
     <Weight
       change={() => {}}
-      decrement={t => {}}
-      delete={t => {}}
+      decrement={() => {}}
+      delete={() => {}}
       increment={increment}
       index={1}
       weight='45'
@@ -75,7 +75,7 @@ test('should call decrement handler when decrement button is clicked', t => {
       change={() => {}}
       decrement={decrement}
       delete={decrement}
-      increment={t => {}}
+      increment={() => {}}
       index={2}
       weight='45'
     />
