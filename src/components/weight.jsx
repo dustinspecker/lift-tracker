@@ -2,6 +2,7 @@ import React from 'react'
 
 export default React.createClass({
   propTypes: {
+    change: React.PropTypes.func.isRequired,
     decrement: React.PropTypes.func.isRequired,
     delete: React.PropTypes.func.isRequired,
     increment: React.PropTypes.func.isRequired,
@@ -20,7 +21,9 @@ export default React.createClass({
   increment() {
     return this.props.increment(this.props.index)
   },
-  handleChange() {},
+  handleChange(event) {
+    return this.props.change(this.props.index, event.target.value)
+  },
   render() {
     return <div>
       <input

@@ -82,3 +82,23 @@ test('should call decrement handler when decrement button is clicked', t => {
 
   t.is(decremented, true)
 })
+
+test('should call change handler when input is changed', t => {
+  const change = (index, weight) => {
+    t.is(index, 3)
+  }
+  const component = renderIntoDocument(
+    <Weight
+      change={change}
+      decrement={() =>{}}
+      delete={() => {}}
+      increment={() => {}}
+      index={3}
+      weight='45'
+    />
+  )
+  const weightInput = scryRenderedDOMComponentsWithTag(component, 'input')[0]
+
+  weightInput.value = '100'
+  Simulate.change(weightInput)
+})
