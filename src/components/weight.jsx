@@ -33,9 +33,9 @@ export default React.createClass({
         type='number'
         value={this.props.weight}
       />
-      <button onClick={this.delete}>Delete</button>
-      <button onClick={this.increment}>+</button>
-      <button onClick={this.decrement}>-</button>
+      <button onClick={this.delete}>{'Delete'}</button>
+      <button onClick={this.increment}>{'+'}</button>
+      <button onClick={this.decrement}>{'-'}</button>
     </div>
   }
 })
