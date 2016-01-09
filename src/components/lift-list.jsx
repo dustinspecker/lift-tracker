@@ -7,6 +7,21 @@ import Weight from './weight'
 
 const LiftList = React.createClass({
   mixins: [PureRenderMixin],
+  propTypes: {
+    change: React.PropTypes.func.isRequired,
+    decrement: React.PropTypes.func.isRequired,
+    deleteHandler: React.PropTypes.func.isRequired,
+    increment: React.PropTypes.func.isRequired,
+    lifts: ImmutablePropTypes.listOf(
+      ImmutablePropTypes.contains({
+        name: React.PropTypes.string.isRequired,
+        weight: React.PropTypes.oneOfType([
+          React.PropTypes.number,
+          React.PropTypes.string
+        ]).isRequired
+      })
+    ).isRequired
+  },
   render() {
     const {change, decrement, deleteHandler, increment, lifts} = this.props
     return <div>
@@ -26,19 +41,5 @@ const LiftList = React.createClass({
     </div>
   }
 })
-
-LiftList.propTypes = {
-  decrement: React.PropTypes.func.isRequired,
-  increment: React.PropTypes.func.isRequired,
-  lifts: ImmutablePropTypes.listOf(
-    ImmutablePropTypes.contains({
-      name: React.PropTypes.string.isRequired,
-      weight: React.PropTypes.oneOfType([
-        React.PropTypes.number,
-        React.PropTypes.string
-      ]).isRequired
-    })
-  ).isRequired
-}
 
 export default LiftList
