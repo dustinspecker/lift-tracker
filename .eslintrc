@@ -1,9 +1,25 @@
 {
   "parser": "babel-eslint",
   "extends": "dustinspecker/esnext",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "func-style": [2, "declaration", {"allowArrowFunctions": true}],
     "new-cap": [2, {"capIsNewExceptions": ["List", "Map"]}],
+    "react/jsx-uses-react": 2,
     "semi": [2, "never"]
+  },
+  "settings": {
+    "react": {
+      "pragma": "React"
+    }
   }
 }

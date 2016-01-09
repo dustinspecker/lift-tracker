@@ -1,4 +1,3 @@
-import {findDOMNode} from 'react-dom'
 import {
   findRenderedDOMComponentWithTag,
   renderIntoDocument,
@@ -11,13 +10,17 @@ import test from 'ava'
 import '../_helper'
 import Weight from '../../src/components/weight'
 
+/* eslint-disable arrow-body-style */
+const noop = () => {}
+/* eslint-enable arrow-body-style */
+
 test('should display weight in input', t => {
   const component = renderIntoDocument(
     <Weight
-      change={() => {}}
-      decrement={() => {}}
-      delete={() => {}}
-      increment={() => {}}
+      change={noop}
+      decrement={noop}
+      delete={noop}
+      increment={noop}
       index={0}
       weight='45'
     />
@@ -32,10 +35,10 @@ test('should call delete handler when delete button is click', t => {
   const deleteHandler = index => deleted = index === 1
   const component = renderIntoDocument(
     <Weight
-      change={() => {}}
-      decrement={() => {}}
+      change={noop}
+      decrement={noop}
       delete={deleteHandler}
-      increment={() => {}}
+      increment={noop}
       index={1}
       weight='45'
     />
@@ -52,9 +55,9 @@ test('should call increment handler when increment button is clicked', t => {
   const increment = index => incremented = index === 1
   const component = renderIntoDocument(
     <Weight
-      change={() => {}}
-      decrement={() => {}}
-      delete={() => {}}
+      change={noop}
+      decrement={noop}
+      delete={noop}
       increment={increment}
       index={1}
       weight='45'
@@ -72,10 +75,10 @@ test('should call decrement handler when decrement button is clicked', t => {
   const decrement = index => decremented = index === 2
   const component = renderIntoDocument(
     <Weight
-      change={() => {}}
+      change={noop}
       decrement={decrement}
       delete={decrement}
-      increment={() => {}}
+      increment={noop}
       index={2}
       weight='45'
     />
@@ -95,9 +98,9 @@ test('should call change handler when input is changed', t => {
   const component = renderIntoDocument(
     <Weight
       change={change}
-      decrement={() =>{}}
-      delete={() => {}}
-      increment={() => {}}
+      decrement={noop}
+      delete={noop}
+      increment={noop}
       index={3}
       weight='45'
     />
