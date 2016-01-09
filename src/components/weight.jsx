@@ -1,6 +1,8 @@
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import React from 'react'
 
+import Button from './button'
+
 export default React.createClass({
   propTypes: {
     change: React.PropTypes.func.isRequired,
@@ -33,9 +35,18 @@ export default React.createClass({
         type='number'
         value={this.props.weight}
       />
-      <button onClick={this.delete}>{'Delete'}</button>
-      <button onClick={this.increment}>{'+'}</button>
-      <button onClick={this.decrement}>{'-'}</button>
+      <Button
+        handleClick={this.delete}
+        text={'Delete'}
+      />
+      <Button
+        handleClick={this.increment}
+        text={'+'}
+      />
+      <Button
+        handleClick={this.decrement}
+        text={'-'}
+      />
     </div>
   }
 })

@@ -20,6 +20,10 @@
     "react/jsx-boolean-value": [2, "never"],
     "react/jsx-closing-bracket-location": [2, "line-aligned"],
     "react/jsx-curly-spacing": [2, "never"],
+    "react/jsx-handler-names": [2, {
+      "eventHandlerPrefix": "handle",
+      "eventHandlerPropPrefix": "on"
+    }],
     "react/jsx-indent": [2, 2],
     "react/jsx-indent-props": [2, 2],
     "react/jsx-key": 2,
