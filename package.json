@@ -33,7 +33,7 @@
     "babel-preset-react": "^6.1.18",
     "browser-sync-webpack-plugin": "^1.0.1",
     "eslint": "^1.10.3",
-    "eslint-config-dustinspecker": "^0.2.5",
+    "eslint-config-dustinspecker": "^0.2.6",
     "eslint-plugin-react": "^3.14.0",
     "jsdom": "^7.1.0",
     "react-addons-test-utils": "^0.14.3",
