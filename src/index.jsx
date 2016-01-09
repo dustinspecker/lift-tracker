@@ -4,7 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import {addLift} from './actions'
-import LiftList from './components/lift-list'
+import LiftList from './containers/lift-list'
 import reducer from './reducer'
 
 const store = createStore(reducer)
