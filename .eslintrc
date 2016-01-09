@@ -40,6 +40,7 @@
     "react/no-direct-mutation-state": 2,
     "react/no-is-mounted": 2,
     "react/no-multi-comp": 2,
+    "react/no-set-state": 2,
     "semi": [2, "never"]
   },
   "settings": {
