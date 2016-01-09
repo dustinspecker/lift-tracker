@@ -1,3 +1,5 @@
+import {join} from 'path'
+
 export default {
   entry: [
     './src/index.jsx'
@@ -18,7 +20,7 @@ export default {
     ]
   },
   output: {
-    path: __dirname + '/dist',
+    path: join(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js'
   }

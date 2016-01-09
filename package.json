@@ -4,7 +4,7 @@
   "description": "Track lifts",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint ./ --ext .js --ignore-pattern node_modules --ignore-pattern dist",
     "test": "NODE_ENV=test; ava --require babel-core/register"
   },
   "repository": "dustinspecker/lift-tracker.git",

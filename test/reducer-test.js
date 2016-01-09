@@ -22,7 +22,7 @@ test('should handle add lift', t => {
 
 test('should handle adding multiple lifts', t => {
   const state = {
-    lifts: fromJS([{name: 'squat', weight: 45 }])
+    lifts: fromJS([{name: 'squat', weight: 45}])
   }
   const action = {type: 'ADD_LIFT', name: 'bench'}
   const nextState = reducer(state, action)

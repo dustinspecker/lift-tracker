@@ -17,7 +17,8 @@ export default {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new BrowserSyncPlugin({
+    new BrowserSyncPlugin(
+      {
         host: 'localhost',
         port: 3000,
         proxy: 'http://localhost:8080/'
