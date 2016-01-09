@@ -25,6 +25,7 @@
     "babel-core": "^6.2.1",
     "babel-eslint": "^5.0.0-beta6",
     "babel-loader": "^6.2.0",
+    "babel-plugin-react-display-name": "^2.0.0",
     "babel-plugin-react-transform": "^2.0.0",
     "babel-plugin-syntax-object-rest-spread": "^6.3.13",
     "babel-plugin-transform-object-rest-spread": "^6.3.13",

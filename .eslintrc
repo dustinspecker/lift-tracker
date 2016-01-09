@@ -14,6 +14,7 @@
   "rules": {
     "func-style": [2, "declaration", {"allowArrowFunctions": true}],
     "new-cap": [2, {"capIsNewExceptions": ["List", "Map"]}],
+    "react/display-name": [2, {"acceptTranspilerName": true}],
     "react/jsx-uses-react": 2,
     "semi": [2, "never"]
   },
