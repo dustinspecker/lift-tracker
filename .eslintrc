@@ -42,6 +42,7 @@
     "react/no-multi-comp": 2,
     "react/no-set-state": 2,
     "react/no-string-refs": 2,
+    "react/no-unknown-property": 2,
     "semi": [2, "never"]
   },
   "settings": {
