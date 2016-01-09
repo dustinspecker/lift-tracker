@@ -1,0 +1,9 @@
+{
+  "parser": "babel-eslint",
+  "extends": "dustinspecker/esnext",
+  "rules": {
+    "func-style": [2, "declaration", {"allowArrowFunctions": true}],
+    "new-cap": [2, {"capIsNewExceptions": ["List", "Map"]}],
+    "semi": [2, "never"]
+  }
+}

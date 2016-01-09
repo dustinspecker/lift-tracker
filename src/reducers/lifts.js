@@ -26,9 +26,9 @@ export default (lifts = List(), {index, name, type, weight} = {}) => {
     case 'ADD_LIFT':
       return addLift(lifts, name, weight)
     case 'DECREMENT_WEIGHT':
-      return adjustWeight(lifts, index, weight => weight - 5)
+      return adjustWeight(lifts, index, currentWeight => currentWeight - 5)
     case 'INCREMENT_WEIGHT':
-      return adjustWeight(lifts, index, weight => weight + 5)
+      return adjustWeight(lifts, index, currentWeight => currentWeight + 5)
     case 'REMOVE_LIFT':
       return lifts.delete(index)
     case 'SET_WEIGHT':
