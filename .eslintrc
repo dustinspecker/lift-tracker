@@ -16,6 +16,7 @@
     "new-cap": [2, {"capIsNewExceptions": ["List", "Map"]}],
     "react/display-name": [2, {"acceptTranspilerName": true}],
     "react/forbid-prop-types": [2, {"forbid": ["any"]}],
+    "react/jsx-boolean-value": [2, "never"],
     "react/jsx-uses-react": 2,
     "semi": [2, "never"]
   },
