@@ -6,7 +6,6 @@ import LiftLabel from './lift-label'
 import Weight from './weight'
 
 const LiftList = React.createClass({
-  mixins: [PureRenderMixin],
   propTypes: {
     change: React.PropTypes.func.isRequired,
     decrement: React.PropTypes.func.isRequired,
@@ -22,6 +21,7 @@ const LiftList = React.createClass({
       })
     ).isRequired
   },
+  mixins: [PureRenderMixin],
   render() {
     const {change, decrement, deleteHandler, increment, lifts} = this.props
     return <div>

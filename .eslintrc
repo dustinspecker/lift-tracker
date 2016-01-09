@@ -48,6 +48,7 @@
     "react/react-in-jsx-scope": 2,
     "react/require-extension": [2, {"extensions": [".js", ".jsx"]}],
     "react/self-closing-comp": 2,
+    "react/sort-comp": 2,
     "semi": [2, "never"]
   },
   "settings": {

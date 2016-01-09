@@ -2,7 +2,6 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import React from 'react'
 
 export default React.createClass({
-  mixins: [PureRenderMixin],
   propTypes: {
     change: React.PropTypes.func.isRequired,
     decrement: React.PropTypes.func.isRequired,
@@ -14,6 +13,7 @@ export default React.createClass({
       React.PropTypes.string
     ]).isRequired
   },
+  mixins: [PureRenderMixin],
   decrement() {
     return this.props.decrement(this.props.index)
   },
