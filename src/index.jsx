@@ -4,7 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import {addLift} from './actions'
-import LiftList from './containers/lift-list'
+import App from './components/app'
 import reducer from './reducer'
 
 const store = createStore(reducer)
@@ -16,7 +16,7 @@ store.dispatch(addLift('deadlift', 300))
 
 ReactDOM.render(
   <Provider store={store}>
-    <LiftList />
+    <App />
   </Provider>,
   document.getElementById('app')
 )
